@@ -198,13 +198,6 @@ body {
     align-items: center;
     padding: 20px;
 }
-
-.fact-wrapper {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-}
-
 /* Wackeln beim Tippen am Smartphone */
 @keyframes wiggle {
     0% { transform: rotate(0deg); }
@@ -213,6 +206,25 @@ body {
     75% { transform: rotate(-3deg); }
     100% { transform: rotate(0deg); }
 }
+
+/* Der Container fängt jetzt den Klick ab */
+.fact-wrapper {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; /* Unterdrückt das Apple-Menü */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* NEU: Wenn der Container angetippt wird, wackelt das Bild darin! */
+.fact-wrapper:active .fact-png {
+    animation: wiggle 0.3s ease-in-out;
+}
+
+/* Das Bild selbst wird für Berührungen "geisterhaft" (nicht mehr greifbar) */
 .fact-png {
     width: 100%;
     height: auto;
@@ -220,16 +232,6 @@ body {
     box-shadow: none;
     border-radius: 0;
     border: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    
-    /* NEU: Verhindert das Apple-Speichern-Menü und Markieren */
-    -webkit-touch-callout: none; 
-    -webkit-user-select: none; 
-    user-select: none; 
-    pointer-events: auto;
-}
-
-.fact-png:active {
-    animation: wiggle 0.3s ease-in-out;
+    pointer-events: none; /* DAS ist der magische Trick gegen das Speichern-Menü */
+    -webkit-user-drag: none; /* Verhindert, dass man das Bild verschieben kann */
 }
