@@ -1,4 +1,4 @@
-/* CI Farben und Schriften definieren */
+/* CI Farben und Schriften */
 :root {
     --bg-beige: #F2E5C3;
     --color-orange: #DEA04F;
@@ -7,7 +7,6 @@
     --color-green: #599E6A;
     --color-blue: #487FB0;
     
-    /* Bitte prüfe in Adobe Fonts die exakten Namen deiner Schriften */
     --font-heading: 'crayonize', sans-serif; 
     --font-body: 'neulis-sans', sans-serif;
 }
@@ -21,19 +20,25 @@
 body {
     background-color: var(--bg-beige);
     font-family: var(--font-body);
-    font-size: 16pt; /* Entspricht Fließtext aus CI */
-    color: #333;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* --- LANDING PAGE (index.html) --- */
+/* --- STARTSEITE (index.html) --- */
+.landing-body {
+    /* Setzt hg-bunt als fixierten, einmaligen Hintergrund */
+    background-image: url('hg-bunt.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .landing-header {
     background-image: url('header.png');
     background-size: cover;
     background-position: center;
-    min-height: 25vh;
+    min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,9 +46,9 @@ body {
 }
 
 .logo-centered {
-    max-width: 80%;
+    max-width: 70%;
     height: auto;
-    max-height: 150px;
+    max-height: 120px;
 }
 
 .landing-main {
@@ -51,67 +56,67 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
 }
 
-.btn-primary {
-    font-family: var(--font-heading);
-    font-size: 20pt; /* Stickertext Größe */
-    background-color: var(--color-terracotta);
-    color: white;
+/* Button als Bild stylen */
+.btn-image-style {
+    background: none;
     border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.2s, background-color 0.2s;
-    text-align: center;
+    padding: 0;
     width: 100%;
-    max-width: 320px;
+    max-width: 280px; /* Begrenzt die maximale Größe auf Mobile */
+    transition: transform 0.2s;
 }
 
-.btn-primary:active {
+.btn-image-style img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.btn-image-style:active {
     transform: scale(0.95);
-    background-color: var(--color-orange);
 }
 
+/* Footer-Korrektur (wird jetzt sauber unten angeheftet) */
 .site-footer {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(242, 229, 195, 0.9); /* Halbtransparentes CI-Beige */
     text-align: center;
     padding: 15px;
-    font-size: 14pt;
+    font-size: 14px;
+    width: 100%;
 }
 
 .site-footer a {
     color: var(--color-blue);
     text-decoration: none;
-    margin-left: 10px;
+    font-weight: bold;
 }
 
 /* --- FAKT-SEITEN (fakt1.html etc.) --- */
+.fact-body {
+    background-color: var(--bg-beige); /* Fester CI-Hintergrund falls Ränder entstehen */
+}
+
 .fact-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 10px 20px;
     background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    height: 70px;
+    height: 60px;
 }
 
 .logo-left {
-    height: 45px;
+    height: 35px;
     width: auto;
 }
 
 .home-link img {
-    height: 35px;
+    height: 30px;
     width: auto;
-    transition: transform 0.2s;
-}
-
-.home-link img:active {
-    transform: rotate(-10deg) scale(0.9); /* Simuliert das "Kicken/Knicken" beim Tippen */
 }
 
 .fact-main {
@@ -119,30 +124,35 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    overflow: hidden;
+    padding: 10px;
 }
 
-.fact-container {
+/* Der Container sorgt dafür, dass das PNG nie abgeschnitten wird */
+.fact-wrapper {
+    position: relative;
     width: 100%;
-    height: calc(100vh - 70px); /* Füllt den Rest des Bildschirms */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    position: relative;
+    max-width: 500px; /* Perfekte Breite für Mobile-First */
+    margin: 0 auto;
 }
 
-.fact-text {
-    font-family: var(--font-heading);
-    font-size: 26pt; /* Unterüberschrift-Größe für gute Lesbarkeit auf Mobile */
-    color: var(--color-blue); /* Wechselbar je nach Lesbarkeit auf dem PNG */
+.fact-png {
+    width: 100%;
+    height: auto;
+    display: block; /* Verhindert unschöne Abstände unter dem Bild */
+}
+
+/* Text exakt bei 2/3 des Bildes positioniert */
+.fact-text-overlay {
+    position: absolute;
+    top: 66.6%; /* Exakt auf 2/3 Höhe von oben */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Zentriert den Textbaustein auf dem Punkt */
+    width: 80%;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.85); /* Macht den Text über dem PNG lesbar */
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 90%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: var(--font-heading);
+    /* Nutzt clamp(), damit die Schriftgröße perfekt mit dem Bild mitskaliert */
+    font-size: clamp(16px, 5.5vw, 24px); 
+    color: var(--color-blue);
+    line-height: 1.3;
+    pointer-events: none; /* Klicks gehen durch den Text durch auf das Bild */
 }
