@@ -132,17 +132,17 @@ body {
     transform: scale(0.96);
 }
 
-/* --- FOOTER --- */
 .site-footer {
     background-image: url('footer.png');
-    background-size: cover; /* ÄNDERUNG: Bild behält Verhältnis, füllt aus, schneidet ab */
-    background-position: center;
+    background-size: cover;        /* Hält das Bild passend im Bereich */
+    background-position: center;   /* Zentriert das Motiv */
     background-repeat: no-repeat;
-    text-align: center;
-    height: 120px; /* HIER: Deine feste Wunschhöhe für den Footer */
-    padding: 30px 15px;
     width: 100%;
-    margin-top: auto;
+    height: 100px;                 /* HIER: Das ist die entscheidende Zahl! */
+    margin-top: auto;              /* Schiebt ihn an den unteren Rand */
+    display: flex;
+    justify-content: center;
+    align-items: center;           /* Zentriert Text vertikal */
 }
 
 .site-footer p {
