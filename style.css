@@ -18,11 +18,16 @@
 }
 
 body {
-    background-color: var(--bg-white); /* Hintergrund überall weiß */
+    background-color: var(--bg-white);
     font-family: var(--font-body);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
+    /* NEU: Verbietet das Markieren von Text (und Live-Text) auf der ganzen Seite */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 /* --- HINTERGRUND MIT TRANSPARENZ (index.html) --- */
