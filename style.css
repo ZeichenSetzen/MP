@@ -18,43 +18,24 @@
 }
 
 body {
-    background-color: var(--bg-white);
+    /* NEU: Der ganzheitliche Hintergrund ist Blau. 
+       Das sieht man beim "Über-Scrollen" (Overscroll) auf dem iPhone am Rand! */
+    background-color: var(--color-blue); 
     font-family: var(--font-body);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     
-    /* NEU: Verbietet das Markieren von Text (und Live-Text) auf der ganzen Seite */
+    /* Apple Live-Text und Markieren überall blockieren */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
 }
 
-/* --- HINTERGRUND MIT TRANSPARENZ (index.html) --- */
-.landing-body {
-    position: relative;
-    background-color: var(--bg-white);
-}
-
-.landing-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('hg-bunt.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25; /* Schöne, dezente Transparenz */
-    z-index: -1;
-}
-
 /* --- GEMEINSAMER HEADER --- */
 .site-header {
     background-image: url('header.png');
-    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite ohne Beschnitt */
+    background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-position: center;
     min-height: 16vh;
@@ -71,28 +52,45 @@ body {
     max-height: 100px;
 }
 
-/* --- MAIN BEREICH STARTSEITE --- */
+/* --- MAIN BEREICH STARTSEITE (MIT KONFETTI) --- */
 .landing-main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    
+    /* NEU: Der Inhaltsbereich zwischen Header und Footer bekommt das reine Weiß */
+    background-color: var(--bg-white);
+    
+    /* NEU: Die Konfetti-Tapete und ihre Animation */
+    background-image: url('tapete.png');
+    background-repeat: repeat; /* Kachelt das Bild endlos in alle Richtungen */
+    background-size: 300px auto; /* Hält die Konfetti-Größe angenehm scharf auf Handys */
+    background-position: 0 0;
+    animation: riesel 40s linear infinite; /* Sanftes, ewiges Rieseln (40 Sekunden pro Durchlauf) */
 }
 
-/* Button-Container mit Pulsier-Animation */
+/* Die Riesel-Animation für das Konfetti */
+@keyframes riesel {
+    from { background-position: 0 0; }
+    to { background-position: 0 4000px; } /* Schiebt das Bild kontinuierlich nach unten */
+}
+
+/* Button-Container */
 .btn-container {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     width: 100%;
-    max-width: 340px; /* Leicht vergrößert für die größere Schrift */
+    max-width: 340px; 
     position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     animation: pulse 2.5s infinite ease-in-out;
+    z-index: 10; /* WICHTIG: Stellt sicher, dass der Button über dem Konfetti klickbar bleibt */
 }
 
 .btn-bg-img {
@@ -101,18 +99,17 @@ body {
     display: block;
 }
 
-/* Größere Schrift auf dem Button (erlaubt 2 Zeilen) */
 .btn-text {
     position: absolute;
     font-family: var(--font-heading);
-    font-size: clamp(18px, 5.5vw, 24px); /* Größere, deutliche Schrift */
+    font-size: clamp(18px, 5.5vw, 24px); 
     color: white; 
     text-align: center;
     padding: 0 15px;
     line-height: 1.2;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     width: 90%;
-    white-space: normal; /* Erlaubt automatischen Zeilenumbruch */
+    white-space: normal; 
 }
 
 @keyframes pulse {
@@ -129,7 +126,7 @@ body {
 /* --- FOOTER MIT PNG --- */
 .site-footer {
     background-image: url('footer.png');
-    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite ohne Beschnitt */
+    background-size: 100% 100%; 
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
@@ -138,13 +135,12 @@ body {
     margin-top: auto;
 }
 
-/* Weißer Text für den Footer (Fakt-Seiten) */
 .site-footer p {
     color: white;
     font-family: var(--font-body);
     font-size: 15px;
     font-weight: 500;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Macht den weißen Text auf buntem Grund perfekt lesbar */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
 }
 
 .site-footer a {
@@ -154,13 +150,9 @@ body {
 }
 
 /* --- FAKT-SEITEN --- */
-.fact-body {
-    background-color: var(--bg-white); /* Hintergrund komplett weiß */
-}
-
 .fact-header {
     background-image: url('header.png');
-    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite */
+    background-size: 100% 100%; 
     background-repeat: no-repeat;
     background-position: center;
     position: relative; 
@@ -202,7 +194,11 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    
+    /* NEU: Macht auch auf den Faktenseiten den Inhaltsbereich zwischen den Wellen weiß */
+    background-color: var(--bg-white);
 }
+
 /* Wackeln beim Tippen am Smartphone */
 @keyframes wiggle {
     0% { transform: rotate(0deg); }
@@ -213,7 +209,7 @@ body {
 }
 
 .fact-wrapper {
-    position: relative; /* Sehr wichtig, damit die Glasscheibe weiß, wo sie liegen soll */
+    position: relative; 
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
@@ -221,7 +217,6 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Die unsichtbare "Glasscheibe" (Schutzschild), die exakt über dem Bild liegt */
 .fact-wrapper::after {
     content: "";
     position: absolute;
@@ -229,13 +224,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10; /* Liegt über dem Bild */
+    z-index: 10; 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
 }
 
-/* Wenn wir auf die Glasscheibe drücken, wackelt das Bild darunter */
 .fact-wrapper:active .fact-png {
     animation: wiggle 0.3s ease-in-out;
 }
@@ -247,6 +241,6 @@ body {
     box-shadow: none;
     border-radius: 0;
     border: none;
-    pointer-events: none; /* Verhindert, dass das Bild angefasst werden kann */
+    pointer-events: none; 
     -webkit-user-drag: none;
 }
