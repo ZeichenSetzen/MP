@@ -1,270 +1,75 @@
-/* CI Farben und Schriften */
+/* --- GLOBALE EINSTELLUNGEN --- */
 :root {
     --bg-white: #ffffff;
-    --color-orange: #DEA04F;
-    --color-pink: #D790AA;
-    --color-terracotta: #CB623F;
-    --color-green: #599E6A;
     --color-blue: #487FB0;
-    
-    --font-heading: 'crayonize', sans-serif; 
-    --font-body: 'neulis-sans', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    --font-heading: 'crayonize', sans-serif;
 }
 
 body {
-    background-color: var(--color-blue); 
-    font-family: var(--font-body);
-    min-height: 100vh;
+    background-color: var(--color-blue);
+    margin: 0;
     display: flex;
     flex-direction: column;
-    
-    /* Apple Live-Text und Markieren überall blockieren */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
+    min-height: 100vh;
 }
 
-/* --- GEMEINSAMER HEADER --- */
-.site-header {
+/* --- HEADER (Startseite & Fakten) --- */
+.site-header, .fact-header {
     background-image: url('header.png');
-    background-size: 100% auto; 
+    background-size: 100% 100%; /* Zwingt das Bild, den Bereich komplett auszufüllen */
     background-repeat: no-repeat;
-    background-position: top center;
     width: 100%;
-    /* NEU: Berechnet die Höhe automatisch basierend auf der echten Bildproportion (Breite zu Höhe) */
-    aspect-ratio: 390 / 110; 
+    /* TRICK: Passe diese Zahl an das Format deines Bildes an (Breite/Höhe) */
+    aspect-ratio: 3.5 / 1; 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
     position: relative;
 }
 
-.logo-centered {
-    max-width: 65%;
-    height: auto;
-    max-height: 80px;
-}
-
-/* --- MAIN BEREICH STARTSEITE (MIT DEZENTEM KONFETTI) --- */
-.landing-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--bg-white);
-    position: relative; /* Wichtig für die transparente Tapeten-Schicht */
-    overflow: hidden; /* Verhindert, dass die Tapete aus dem Kasten herausragt */
-}
-
-/* NEU: Das kachelnde Konfetti liegt jetzt auf einer eigenen, transparenten Schicht */
-.landing-main::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('tapete.png');
-    background-repeat: repeat; 
-    background-size: 300px auto; 
-    background-position: 0 0;
-    opacity: 0.15; /* GEÄNDERT: Nur noch 15% Sichtbarkeit (extrem dezent) */
-    animation: riesel 150s linear infinite; 
-    pointer-events: none; /* Klicks gehen durch das Muster durch zum Button */
-    z-index: 1;
-}
-
-@keyframes riesel {
-    from { background-position: 0 0; }
-    to { background-position: 0 4000px; } 
-}
-
-/* Button-Container */
-.btn-container {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 100%;
-    max-width: 340px; 
-    position: relative;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    animation: pulse 2.5s infinite ease-in-out;
-    z-index: 10; /* Steht über der Konfetti-Schicht */
-}
-
-.btn-bg-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.btn-text {
-    position: absolute;
-    font-family: var(--font-heading);
-    font-size: clamp(18px, 5.5vw, 24px); 
-    color: white; 
-    text-align: center;
-    padding: 0 15px;
-    line-height: 1.2;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
-    width: 90%;
-    white-space: normal; 
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.04); }
-    100% { transform: scale(1); }
-}
-
-.btn-container:active {
-    animation: none;
-    transform: scale(0.96);
-}
-
-/* --- FOOTER MIT PNG --- */
+/* --- FOOTER (Startseite & Fakten) --- */
 .site-footer {
     background-image: url('footer.png');
-    background-size: 100% auto; 
-    background-position: bottom center;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
-    /* NEU: Berechnet die Höhe automatisch basierend auf der echten Bildproportion */
-    aspect-ratio: 390 / 120; 
+    aspect-ratio: 3.5 / 1; /* Gleiche Logik wie Header */
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Schiebt den Text nach unten in die Welle */
-    padding-bottom: 25px; /* Abstand zur untersten Kante */
+    align-items: flex-end;
+    padding-bottom: 20px;
     margin-top: auto;
 }
 
 .site-footer p {
-    color: white;
-    font-family: var(--font-heading); 
-    font-size: 22px; 
-    font-weight: normal;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); 
-}
-
-.site-footer a {
-    color: white;
-    text-decoration: underline;
-}
-
-/* --- FAKT-SEITEN --- */
-.fact-header {
-    background-image: url('header.png');
-    background-size: 100% auto; 
-    background-repeat: no-repeat;
-    background-position: top center;
-    width: 100%;
-    /* Identische proportionale Höhe wie auf der Startseite */
-    aspect-ratio: 390 / 110; 
-    position: relative; 
-    display: flex;
-    align-items: center; 
-    padding: 0 20px;
-}
-
-.logo-left {
-    height: auto;
-    max-height: 60px;
-    max-width: 35%; 
-    position: relative;
-    z-index: 2;
-}
-
-/* Zähler in der Mitte (1/8) */
-.fact-counter {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%); 
     font-family: var(--font-heading);
-    font-size: 28px;
-    color: var(--bg-white); 
-    z-index: 5;
+    color: white;
+    font-size: 20px;
 }
 
-.home-link {
-    position: absolute;
-    right: 20px; 
-    top: 50%;
-    transform: translateY(-50%); 
-    z-index: 10; 
-}
-
-.home-link img {
-    height: 35px;
-    width: auto;
-    transition: transform 0.2s;
-}
-
-.home-link img:active {
-    transform: scale(0.9) rotate(-5deg);
-}
-
-.fact-main {
+/* --- TAPETE (Startseite) --- */
+.landing-main {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     background-color: var(--bg-white);
+    background-image: url('tapete.png');
+    background-size: 300px;
+    opacity: 0.85; /* Etwas dezenter */
 }
 
-/* Wackeln beim Tippen am Smartphone */
-@keyframes wiggle {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
-    75% { transform: rotate(-3deg); }
-    100% { transform: rotate(0deg); }
-}
-
-.fact-wrapper {
-    position: relative; 
+/* --- WACKEL-LOGIK (Fakten) --- */
+.fact-png {
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.fact-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10; 
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
+    display: block;
+    transition: transform 0.1s;
 }
 
 .fact-wrapper:active .fact-png {
     animation: wiggle 0.3s ease-in-out;
 }
 
-.fact-png {
-    width: 100%;
-    height: auto;
-    display: block;
-    box-shadow: none;
-    border-radius: 0;
-    border: none;
-    pointer-events: none; 
-    -webkit-user-drag: none;
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
 }
