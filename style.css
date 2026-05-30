@@ -30,18 +30,20 @@ body {
     user-select: none;
 }
 
-/* --- GEMEINSAMER HEADER (Startseite) --- */
-.site-header {
+/* --- HEADER (Start & Fakten) --- */
+.site-header, .fact-header {
     background-image: url('header.png');
-    background-size: cover; /* ÄNDERUNG: Bild behält Verhältnis, füllt aus, schneidet ab */
     background-repeat: no-repeat;
-    background-position: center; /* Zentriert den Ausschnitt */
+    background-position: center top;
+    /* "contain" sorgt dafür, dass das Bild IMMER ganz zu sehen ist */
+    background-size: contain; 
     width: 100%;
-    height: 120px; /* HIER: Deine feste Wunschhöhe für den Header */
+    /* Die Höhe passt sich automatisch an das Seitenverhältnis an */
+    aspect-ratio: 1920 / 590; 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 0;
     position: relative;
 }
 
@@ -131,18 +133,21 @@ body {
     animation: none;
     transform: scale(0.96);
 }
-
+/* --- FOOTER (Start & Fakten) --- */
 .site-footer {
     background-image: url('footer.png');
-    background-size: cover;        /* Hält das Bild passend im Bereich */
-    background-position: center;   /* Zentriert das Motiv */
     background-repeat: no-repeat;
+    background-position: center bottom;
+    /* "contain" sorgt dafür, dass das Bild IMMER ganz zu sehen ist */
+    background-size: contain; 
     width: 100%;
-    height: 100px;                 /* HIER: Das ist die entscheidende Zahl! */
-    margin-top: auto;              /* Schiebt ihn an den unteren Rand */
+    /* Die Höhe passt sich automatisch an das Seitenverhältnis an */
+    aspect-ratio: 1920 / 590; 
     display: flex;
     justify-content: center;
-    align-items: center;           /* Zentriert Text vertikal */
+    align-items: flex-end;
+    padding-bottom: 5%; /* Passt den Abstand nach unten prozentual an */
+    margin-top: auto;
 }
 
 .site-footer p {
@@ -161,14 +166,16 @@ body {
 /* --- FAKT-SEITEN HEADER --- */
 .fact-header {
     background-image: url('header.png');
-    background-size: cover; /* ÄNDERUNG: Bild behält Verhältnis, füllt aus, schneidet ab */
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center top; /* Oben zentriert */
+    background-size: contain;        /* Bild wird komplett gezeigt, nicht beschnitten */
+    width: 100%;                     /* Volle Breite */
+    aspect-ratio: 1920 / 590;        /* Berechnet die Höhe automatisch basierend auf Bildformat */
     position: relative; 
     display: flex;
     align-items: center; 
-    padding: 15px 20px;
-    height: 120px; /* HIER: Gleiche feste Höhe wie beim Header oben */
+    padding: 0 20px;
+    /* height: 120px;  <-- DAS HIER LÖSCHEN ODER AUSKOMMENTIEREN */
 }
 
 .logo-left {
