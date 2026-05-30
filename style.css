@@ -1,6 +1,6 @@
 /* CI Farben und Schriften */
 :root {
-    --bg-beige: #F2E5C3;
+    --bg-white: #ffffff;
     --color-orange: #DEA04F;
     --color-pink: #D790AA;
     --color-terracotta: #CB623F;
@@ -18,7 +18,7 @@
 }
 
 body {
-    background-color: var(--bg-beige);
+    background-color: var(--bg-white); /* Hintergrund überall weiß */
     font-family: var(--font-body);
     min-height: 100vh;
     display: flex;
@@ -28,9 +28,9 @@ body {
 /* --- HINTERGRUND MIT TRANSPARENZ (index.html) --- */
 .landing-body {
     position: relative;
+    background-color: var(--bg-white);
 }
 
-/* Erzeugt das transparente Hintergrundbild, ohne den Inhalt zu beeinflussen */
 .landing-body::before {
     content: "";
     position: fixed;
@@ -42,88 +42,47 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    opacity: 0.35; /* Hier kannst du die Transparenz einstellen (0.0 bis 1.0) */
+    opacity: 0.25; /* Schöne, dezente Transparenz */
     z-index: -1;
 }
 
-/* --- GEMEINSAMER HEADER (Für Main und Fakten) --- */
+/* --- GEMEINSAMER HEADER --- */
 .site-header {
     background-image: url('header.png');
-    background-size: cover;
+    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite ohne Beschnitt */
+    background-repeat: no-repeat;
     background-position: center;
-    min-height: 20vh;
+    min-height: 16vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    position: relative; /* Wichtig für die Positionierung des Home-Buttons */
+    position: relative;
 }
 
 .logo-centered {
     max-width: 70%;
     height: auto;
-    max-height: 120px;
-}
-
-/* Home-Button absolut rechts platziert, damit das Logo exakt mittig bleibt */
-.home-link {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.home-link img {
-    height: 35px;
-    width: auto;
-    transition: transform 0.2s;
-}
-
-.home-link img:active {
-    transform: scale(0.9) rotate(-5deg);
+    max-height: 100px;
 }
 
 /* --- MAIN BEREICH STARTSEITE --- */
 .landing-main {
     flex: 1;
     display: flex;
-    flex-direction: column; /* Ordnet Button und Text untereinander an */
     justify-content: center;
     align-items: center;
     padding: 20px;
-    gap: 30px; /* Sorgt für einen schönen Abstand zwischen Button und Text */
 }
 
-/* Neuer Hinweis-Text für das Sammelheft */
-.promo-text {
-    font-family: var(--font-body);
-    font-size: 16px;
-    color: var(--color-blue);
-    text-align: center;
-    max-width: 350px;
-    background-color: rgba(255, 255, 255, 0.8); /* Weißer, leicht durchsichtiger Kasten für Lesbarkeit */
-    padding: 15px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    line-height: 1.5;
-}
-
-.promo-text strong {
-    color: var(--color-terracotta); /* Hebt den Titel in deiner CI-Farbe hervor */
-    font-family: var(--font-heading);
-    font-size: 18px;
-    display: block; /* Setzt den Titel in eine eigene Zeile */
-    margin-top: 5px;
-}
-
-/* Button-Container als interaktives Element mit Pulsier-Animation */
+/* Button-Container mit Pulsier-Animation */
 .btn-container {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     width: 100%;
-    max-width: 320px;
+    max-width: 340px; /* Leicht vergrößert für die größere Schrift */
     position: relative;
     display: inline-flex;
     justify-content: center;
@@ -137,22 +96,23 @@ body {
     display: block;
 }
 
-/* Der Text, der über dem Button-PNG liegt */
+/* Größere Schrift auf dem Button (erlaubt 2 Zeilen) */
 .btn-text {
     position: absolute;
     font-family: var(--font-heading);
-    font-size: clamp(14px, 4.5vw, 18px); /* Passt sich dynamisch der Displaygröße an */
+    font-size: clamp(18px, 5.5vw, 24px); /* Größere, deutliche Schrift */
     color: white; 
     text-align: center;
-    padding: 0 20px;
+    padding: 0 15px;
     line-height: 1.2;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* Erhöht die Lesbarkeit auf dem Bild */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    white-space: normal; /* Erlaubt automatischen Zeilenumbruch */
 }
 
-/* Pulsier-Animation */
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.04); }
     100% { transform: scale(1); }
 }
 
@@ -164,64 +124,65 @@ body {
 /* --- FOOTER MIT PNG --- */
 .site-footer {
     background-image: url('footer.png');
-    background-size: cover;
+    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite ohne Beschnitt */
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
-    padding: 25px 15px;
-    font-size: 14px;
+    padding: 30px 15px;
     width: 100%;
-    margin-top: auto; /* Schiebt den Footer immer ganz nach unten */
+    margin-top: auto;
 }
 
+/* Weißer Text für den Footer (Fakt-Seiten) */
 .site-footer p {
-    background-color: rgba(242, 229, 195, 0.8); /* Macht Text über dem Footer-PNG lesbar */
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 10px;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* Macht den weißen Text auf buntem Grund perfekt lesbar */
 }
 
 .site-footer a {
-    color: var(--color-blue);
-    text-decoration: none;
+    color: white;
+    text-decoration: underline;
     font-weight: bold;
 }
 
 /* --- FAKT-SEITEN --- */
 .fact-body {
-    background-color: var(--bg-beige); 
+    background-color: var(--bg-white); /* Hintergrund komplett weiß */
 }
 
 .fact-header {
     background-image: url('header.png');
-    background-size: cover;
+    background-size: 100% 100%; /* Zeigt die Grafik in voller Höhe und Breite */
+    background-repeat: no-repeat;
     background-position: center;
-    position: relative; /* Wichtig, damit der Home-Button sich daran orientieren kann */
+    position: relative; 
     display: flex;
-    align-items: center; /* Zentriert das Logo vertikal */
+    align-items: center; 
     padding: 15px 20px;
-    min-height: 15vh;
+    min-height: 14vh;
 }
 
 .logo-left {
     height: auto;
-    max-height: 80px;
+    max-height: 70px;
     max-width: 60%;
     position: relative;
-    z-index: 2; /* Hebt das Logo etwas an */
+    z-index: 2;
 }
 
-/* Home-Button absolut nach rechts pinnen */
 .home-link {
     position: absolute;
-    right: 20px; /* Fester Abstand vom rechten Rand */
+    right: 20px; 
     top: 50%;
-    transform: translateY(-50%); /* Zieht den Button exakt in die vertikale Mitte */
-    z-index: 10; /* Garantiert, dass er ÜBER dem Header-Hintergrund liegt */
+    transform: translateY(-50%); 
+    z-index: 10; 
 }
 
 .home-link img {
-    height: 45px;
+    height: 40px;
     width: auto;
     transition: transform 0.2s;
 }
@@ -234,35 +195,36 @@ body {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
 }
 
 .fact-wrapper {
     width: 100%;
-    max-width: 500px;
+    max-width: 480px;
     margin: 0 auto;
 }
 
-/* --- WACKEL-ANIMATION FÜR DIE FAKTEN --- */
+/* Wackeln beim Tippen am Smartphone */
 @keyframes wiggle {
-    0% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(-4deg) scale(0.98); }
-    50% { transform: rotate(4deg) scale(1.02); }
-    75% { transform: rotate(-4deg) scale(0.98); }
-    100% { transform: rotate(0deg) scale(1); }
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .fact-png {
     width: 100%;
     height: auto;
     display: block;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-    border-radius: 10px;
-    cursor: pointer; /* Ändert den Mauszeiger, um Klickbarkeit zu zeigen */
+    box-shadow: none;   /* Schatten komplett entfernt */
+    border-radius: 0;   /* Eckenrundung entfernt für nahtlosen Übergang */
+    border: none;       /* Kein Rahmen */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Verhindert den standardmäßigen blauen Klick-Kasten auf Handys */
 }
 
-/* Aktiviert das Wackeln beim Klicken/Tippen */
 .fact-png:active {
-    animation: wiggle 0.4s ease-in-out;
+    animation: wiggle 0.3s ease-in-out;
 }
