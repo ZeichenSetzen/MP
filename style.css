@@ -165,21 +165,53 @@ body {
 
 /* --- FAKT-SEITEN --- */
 .fact-body {
-    background-color: var(--bg-beige);
+    /* Setzt den Hintergrund der Fakten-Seiten auf dein CI-Beige */
+    background-color: var(--bg-beige); 
+}
+
+.fact-header {
+    background-image: url('header.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between; /* Schiebt Logo nach links und Home nach rechts */
+    align-items: center;
+    padding: 15px 20px;
+    min-height: 15vh; /* Etwas kompakter als auf der Startseite */
+}
+
+.logo-left {
+    height: auto;
+    max-height: 80px; /* Passt das Logo an die Header-Höhe an */
+    max-width: 60%;
+}
+
+.home-link {
+    /* Keine absolute Positionierung mehr nötig dank flexbox */
+    display: inline-block;
+}
+
+.home-link img {
+    height: 45px; /* Etwas größer für gute Klickbarkeit */
+    width: auto;
+    transition: transform 0.2s;
+}
+
+.home-link img:active {
+    transform: scale(0.9) rotate(-5deg);
 }
 
 .fact-main {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 15px;
+    align-items: flex-start; /* Setzt das Bild eher nach oben statt mittig */
+    padding: 20px;
 }
 
 .fact-wrapper {
-    position: relative;
     width: 100%;
-    max-width: 480px;
+    max-width: 500px; /* Optimale Breite für Handys und Tablets */
     margin: 0 auto;
 }
 
@@ -187,18 +219,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
-}
-
-.fact-text-overlay {
-    position: absolute;
-    top: 66.6%; /* Exakt bei 2/3 von oben */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: clamp(16px, 5.5vw, 22px); 
-    color: var(--color-blue);
-    line-height: 1.3;
-    pointer-events: none;
+    /* Ein leichter Schatten hebt das Bild auf dem beigen Grund schön ab (optional) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    border-radius: 10px; /* Rundet die Ecken des PNGs leicht ab, falls gewünscht */
 }
