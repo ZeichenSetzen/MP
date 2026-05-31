@@ -20,23 +20,23 @@
     </main>
 
     <script>
-        // HIER TRÄGST DU DEINE VIDEOS EIN
-        // "title" ist jetzt nur noch das Wort selbst (ohne "Gebärde:")
         const videoDatenbank = {
             "1": {
                 title: "Hallo",
                 headerClass: "v-header-1",
-                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868815/IMG_1176_khk2l7.mov
+                // FEHLER BEHOBEN: Das fehlende " am Ende wurde ergänzt.
+                // OPTIMIERT: .mov in .mp4 geändert für alle Handys!
+                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868815/IMG_1176_khk2l7.mp4"
             },
             "2": {
                 title: "Danke",
                 headerClass: "v-header-2",
-                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868815/IMG_1177_a4sz0c.mov"
+                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868815/IMG_1177_a4sz0c.mp4"
             },
             "3": {
                 title: "Bitte",
                 headerClass: "v-header-3",
-                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868816/IMG_1179_ylhq9d.mov"
+                url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868816/IMG_1179_ylhq9d.mp4"
             }
         };
 
@@ -46,21 +46,16 @@
         if (videoId && videoDatenbank[videoId]) {
             const daten = videoDatenbank[videoId];
             
-            // Text einfügen
             document.getElementById('dynamic-title').innerText = daten.title;
-            // Richtigen Header setzen
             document.getElementById('dynamic-header').classList.add(daten.headerClass);
             
-            // Video-Quelle setzen und laden
             const videoElement = document.getElementById('dynamic-video');
             document.getElementById('video-source').src = daten.url;
             videoElement.load();
             
-            // Autoplay auf mobilen Geräten nochmal explizit anstoßen
             videoElement.play().catch(e => console.log("Autoplay blockiert, warte auf Interaktion."));
             
         } else {
-            // Fehlermeldung
             document.getElementById('dynamic-title').innerText = "Video nicht gefunden";
             document.getElementById('dynamic-header').classList.add("v-header-1");
             document.getElementById('dynamic-video').style.display = "none";
