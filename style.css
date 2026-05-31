@@ -268,3 +268,52 @@ body {
     pointer-events: none; 
     -webkit-user-drag: none;
 }
+/* --- QR-CODE VIDEO SEITEN --- */
+.video-header {
+    width: 100%;
+    aspect-ratio: 3.25 / 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Die 5 verschiedenen Header-Bilder (passe die Dateinamen falls nötig an) */
+.v-header-1 { background-image: url('video_header1.png'); }
+.v-header-2 { background-image: url('video_header2.png'); }
+.v-header-3 { background-image: url('video_header3.png'); }
+.v-header-4 { background-image: url('video_header4.png'); }
+.v-header-5 { background-image: url('video_header5.png'); }
+
+.video-title {
+    font-family: var(--font-heading);
+    color: white;
+    font-size: clamp(22px, 6vw, 32px);
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.video-main {
+    flex: 1;
+    background-color: var(--bg-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Hochformat-Video absolut responsive und ohne Beschnitt */
+.portrait-video {
+    width: 100%;
+    max-width: 400px; /* Verhindert, dass es auf dem Tablet riesig wird */
+    max-height: 70vh; /* Lässt genug Platz für den Header auf kleinen Handys */
+    height: auto;
+    aspect-ratio: 9 / 16; /* Erzwingt das klassische Smartphone-Hochformat */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-radius: 16px;
+    outline: none;
+}
