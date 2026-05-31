@@ -299,12 +299,13 @@ body {
 }
 
 .video-main {
-    flex: 1;
+    flex: 1; /* Zwingt den Bereich, den gesamten Platz bis zum Footer zu füllen */
+    width: 100%; /* Spanne über die gesamte Breite */
     background-color: var(--bg-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 20px 0; /* Weniger Abstand an den Seiten, damit es fülliger wirkt */
 }
 
 /* Hochformat-Video ohne Kasten und Schatten */
@@ -314,11 +315,13 @@ body {
     max-height: 75vh;
     height: auto;
     aspect-ratio: 9 / 16;
+    object-fit: cover; /* Verhindert graue Balken, Video füllt das Format perfekt aus */
     outline: none;
-    box-shadow: none;     /* Schatten entfernt */
-    border: none;         /* Rahmen entfernt */
-    border-radius: 0;     /* Ecken eckig gemacht */
+    box-shadow: none;     
+    border: none;         
+    border-radius: 0;     
     background-color: transparent;
+    -webkit-tap-highlight-color: transparent; /* Entfernt das blaue Flackern beim Antippen */
 }
 
 /* Versteckt den Ton-Button im Bedienfeld (funktioniert in Safari/Chrome) */
