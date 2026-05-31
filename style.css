@@ -336,29 +336,31 @@ body {
 }
 
 .video-main {
-    flex: 1; /* Zwingt den Bereich, den gesamten Platz bis zum Footer zu füllen */
-    width: 100%; /* Spanne über die gesamte Breite */
+    flex: 1;
+    width: 100%;
     background-color: var(--bg-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0; /* Weniger Abstand an den Seiten, damit es fülliger wirkt */
+    
+    /* Zieht die Box unter die Wellen */
+    margin-top: -30px; 
+    margin-bottom: -30px;
+    
+    /* Hier ist dein Padding für den "sittlichen" Abstand */
+    padding: 40px 20px; 
+    
+    position: relative;
+    z-index: 1;
 }
 
-/* Hochformat-Video ohne Kasten und Schatten */
 .portrait-video {
     width: 100%;
     max-width: 400px;
-    max-height: 75vh;
+    /* Damit es nicht zu groß wird und Platz zum Rand lässt */
     height: auto;
-    aspect-ratio: 9 / 16;
-    object-fit: cover; /* Verhindert graue Balken, Video füllt das Format perfekt aus */
-    outline: none;
-    box-shadow: none;     
-    border: none;         
-    border-radius: 0;     
-    background-color: transparent;
-    -webkit-tap-highlight-color: transparent; /* Entfernt das blaue Flackern beim Antippen */
+    border-radius: 15px; /* Ein kleiner Radius sieht meist "sittlicher" aus */
+    overflow: hidden;
 }
 
 /* Versteckt den Ton-Button im Bedienfeld (funktioniert in Safari/Chrome) */
