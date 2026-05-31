@@ -282,7 +282,7 @@ body {
     padding: 0 20px;
 }
 
-/* Die 5 verschiedenen Header-Bilder (passe die Dateinamen falls nötig an) */
+/* Die 5 verschiedenen Header-Bilder */
 .v-header-1 { background-image: url('video_header1.png'); }
 .v-header-2 { background-image: url('video_header2.png'); }
 .v-header-3 { background-image: url('video_header3.png'); }
@@ -290,11 +290,12 @@ body {
 .v-header-5 { background-image: url('video_header5.png'); }
 
 .video-title {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading); /* Erzwingt die Crayonize-Schrift */
     color: white;
-    font-size: clamp(22px, 6vw, 32px);
+    font-size: clamp(26px, 7vw, 40px); /* Etwas größer, da Crayonize kleiner ausfällt */
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin: 0;
 }
 
 .video-main {
@@ -306,14 +307,22 @@ body {
     padding: 20px;
 }
 
-/* Hochformat-Video absolut responsive und ohne Beschnitt */
+/* Hochformat-Video ohne Kasten und Schatten */
 .portrait-video {
     width: 100%;
-    max-width: 400px; /* Verhindert, dass es auf dem Tablet riesig wird */
-    max-height: 70vh; /* Lässt genug Platz für den Header auf kleinen Handys */
+    max-width: 400px;
+    max-height: 75vh;
     height: auto;
-    aspect-ratio: 9 / 16; /* Erzwingt das klassische Smartphone-Hochformat */
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    border-radius: 16px;
+    aspect-ratio: 9 / 16;
     outline: none;
+    box-shadow: none;     /* Schatten entfernt */
+    border: none;         /* Rahmen entfernt */
+    border-radius: 0;     /* Ecken eckig gemacht */
+    background-color: transparent;
+}
+
+/* Versteckt den Ton-Button im Bedienfeld (funktioniert in Safari/Chrome) */
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-slider {
+    display: none !important;
 }
