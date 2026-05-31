@@ -30,21 +30,24 @@ body {
     user-select: none;
 }
 
-/* --- GEMEINSAMER HEADER --- */
-.site-header {
-    background-image: url('header.png');
-    background-size: 100% auto; 
-    background-repeat: no-repeat;
-    background-position: top center;
+/* --- GEMEINSAMER HEADER (Start, Fakten, Video) --- */
+.site-header, .fact-header, .video-header {
     width: 100%;
-    /* NEU: Berechnet die Höhe automatisch basierend auf der echten Bildproportion (Breite zu Höhe) */
-    aspect-ratio: 390 / 110; 
+    aspect-ratio: 390 / 120; /* Etwas mehr Höhe gibt der Welle mehr Platz */
+    background-size: cover; 
+    
+    /* DER ZAUBERTRICK: Klebt das Bild unten fest, die Welle wird nie abgeschnitten */
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+    
+    /* Zieht den Header in den absoluten Vordergrund */
     position: relative;
-    z-index: 10;
+    z-index: 10; 
 }
 
 .logo-centered {
@@ -136,20 +139,23 @@ body {
 
 /* --- FOOTER MIT PNG --- */
 .site-footer {
-    background-image: url('footer.png');
-    background-size: 100% auto; 
-    background-position: bottom center;
-    background-repeat: no-repeat;
     width: 100%;
-    /* NEU: Berechnet die Höhe automatisch basierend auf der echten Bildproportion */
-    aspect-ratio: 390 / 120; 
+    aspect-ratio: 390 / 120;
+    background-size: cover; 
+    
+    /* DER ZAUBERTRICK: Klebt das Bild oben fest, die Welle bleibt erhalten */
+    background-position: center top; 
+    background-repeat: no-repeat;
+    
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Schiebt den Text nach unten in die Welle */
-    padding-bottom: 25px; /* Abstand zur untersten Kante */
+    align-items: flex-end;
+    padding-bottom: 25px;
     margin-top: auto;
+    
+    /* Zieht den Footer in den absoluten Vordergrund */
     position: relative;
-    z-index: 10;
+    z-index: 10; 
 }
 
 .site-footer p {
