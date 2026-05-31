@@ -13,7 +13,7 @@
     </header>
 
     <main class="video-main">
-        <video id="dynamic-video" class="portrait-video" controls autoplay loop muted playsinline>
+        <video id="dynamic-video" class="portrait-video" autoplay loop muted playsinline>
             <source id="video-source" src="" type="video/mp4">
             Dein Browser unterstützt dieses Video leider nicht.
         </video>
@@ -24,8 +24,6 @@
             "1": {
                 title: "Hallo",
                 headerClass: "v-header-1",
-                // FEHLER BEHOBEN: Das fehlende " am Ende wurde ergänzt.
-                // OPTIMIERT: .mov in .mp4 geändert für alle Handys!
                 url: "https://res.cloudinary.com/de3kjqa5o/video/upload/q_auto/f_auto/v1779868815/IMG_1176_khk2l7.mp4"
             },
             "2": {
@@ -53,7 +51,17 @@
             document.getElementById('video-source').src = daten.url;
             videoElement.load();
             
-            videoElement.play().catch(e => console.log("Autoplay blockiert, warte auf Interaktion."));
+            // Versuch, das Video automatisch zu starten
+            videoElement.play().catch(e => console.log("Autoplay blockiert."));
+            
+            // NEU: Das Bedienfeld erscheint nur, wenn auf das Video getippt wird!
+            videoElement.addEventListener('click', function() {
+                if (this.hasAttribute('controls')) {
+                    this.removeAttribute('controls');
+                } else {
+                    this.setAttribute('controls', 'controls');
+                }
+            });
             
         } else {
             document.getElementById('dynamic-title').innerText = "Video nicht gefunden";
@@ -63,3 +71,4 @@
     </script>
 </body>
 </html>
+
