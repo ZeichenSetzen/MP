@@ -303,17 +303,18 @@ body {
     pointer-events: none; 
     -webkit-user-drag: none;
 }
-/* --- QR-CODE VIDEO SEITEN --- */
+/* --- VIDEO SEITEN HEADER (Nur dieser eine gilt!) --- */
 .video-header {
     width: 100%;
-    aspect-ratio: 3.25 / 1;
+    aspect-ratio: 390 / 120; /* Hier auf das gleiche Verhältnis wie die anderen Header bringen */
     background-size: cover;
-    background-position: center;
+    background-position: center bottom; /* Welle immer unten fixiert */
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    z-index: 10;
     padding: 0 20px;
 }
 
@@ -325,9 +326,9 @@ body {
 .v-header-5 { background-image: url('video_header5.png'); }
 
 .video-title {
-    font-family: var(--font-heading); /* Erzwingt die Crayonize-Schrift */
+    font-family: var(--font-heading);
     color: white;
-    font-size: clamp(26px, 7vw, 40px); /* Etwas größer, da Crayonize kleiner ausfällt */
+    font-size: clamp(26px, 7vw, 40px);
     text-align: center;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
     margin: 0;
