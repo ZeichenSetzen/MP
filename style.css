@@ -56,19 +56,35 @@ body {
     max-height: 80px;
 }
 
-/* --- MAIN BEREICH STARTSEITE (MIT DEZENTEM KONFETTI) --- */
-.landing-main {
+/* --- MAIN BEREICHE (Start, Fakten, Video) --- */
+.landing-main, .fact-main, .video-main {
     flex: 1;
+    width: 100%;
+    background-color: var(--bg-white);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: var(--bg-white);
-    position: relative; /* Wichtig für die transparente Tapeten-Schicht */
-    overflow: hidden; /* Verhindert, dass die Tapete aus dem Kasten herausragt */
+    
+    /* Legt die weiße Box EINE Ebene hinter Header und Footer */
+    position: relative;
+    z-index: 1; 
+    
+    /* Zieht die weiße Box 30px nach oben (unter den Header) und unten (unter den Footer) */
+    margin-top: -30px;
+    margin-bottom: -30px;
+    
+    /* Verhindert, dass der Content (Button, Video) in die Wellen rutscht */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Spezifische Ergänzung nur für die Startseite (wegen Konfetti) */
+.landing-main {
+    overflow: hidden; 
 }
 
 /* NEU: Das kachelnde Konfetti liegt jetzt auf einer eigenen, transparenten Schicht */
+/* DAS HIER BLEIBT GENAU WIE VORHER! */
 .landing-main::before {
     content: "";
     position: absolute;
@@ -80,9 +96,9 @@ body {
     background-repeat: repeat; 
     background-size: 300px auto; 
     background-position: 0 0;
-    opacity: 0.15; /* GEÄNDERT: Nur noch 15% Sichtbarkeit (extrem dezent) */
+    opacity: 0.15; 
     animation: riesel 150s linear infinite; 
-    pointer-events: none; /* Klicks gehen durch das Muster durch zum Button */
+    pointer-events: none; 
     z-index: 1;
 }
 
