@@ -293,6 +293,31 @@ body {
     pointer-events: none; 
     -webkit-user-drag: none;
 }
+/* Styling für den Zurück-Pfeil */
+.back-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 40px auto; /* Abstand nach oben zum Bild und nach unten zum Footer */
+    width: 50px;
+    height: 50px;
+    color: var(--color-blue); /* Ändert die Farbe des Pfeils, passe sie gerne an */
+    background-color: var(--bg-white);
+    border-radius: 50%; /* Macht den Hintergrund rund */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ein leichter Schatten für Tiefe */
+    transition: transform 0.2s ease; /* Weiche Animation beim Antippen/Hovern */
+}
+
+/* Größe des eigentlichen Pfeil-Symbols */
+.back-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Kleiner Effekt, wenn man drüberfährt */
+.back-arrow:hover {
+    transform: scale(1.1);
+}
 /* --- VIDEO SEITEN HEADER (Nur dieser eine gilt!) --- */
 .video-header {
     width: 100%;
