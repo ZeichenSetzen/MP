@@ -194,18 +194,25 @@ body {
 }
 /* --- FOOTER MIT PNG --- */
 .site-footer {
-    background-image: url('footer.png'); /* HIER den Namen deiner Footer-Grafik eintragen */
+    background-image: url('footer.png'); 
     background-color: transparent;
     width: 100%;
-    aspect-ratio: 390 / 120;
+    
+    /* NEU: Der Footer ist jetzt deutlich schmaler (zuvor 390/120) */
+    aspect-ratio: 390 / 90; 
+    
     background-size: cover; 
-    background-position: center top;    /* Klebt die Welle oben an die weiße Box */
+    background-position: center top; 
     background-repeat: no-repeat;
     
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 25px;
+    
+    /* NEU: Zentriert den Text jetzt vertikal im schmaleren Footer */
+    align-items: center; 
+    
+    /* NEU: Weniger Abstand, da die Box kleiner ist */
+    padding: 10px 20px; 
     margin-top: auto;
     position: relative;
     z-index: 10; 
