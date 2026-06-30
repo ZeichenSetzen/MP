@@ -167,15 +167,38 @@ body {
     animation: none;
     transform: scale(0.96);
 }
-* --- ANIMIERTE HAND AUF STARTSEITE --- */
+/* --- ANIMIERTE HAND AUF STARTSEITE --- */
 .sliding-hand {
     position: absolute;
-    top: -300px; /* Startet weit außerhalb des sichtbaren Bereichs */
-    right: 20px; /* Position am rechten Rand */
-    width: 150px; /* Passe die Größe deines Bildes an */
+    /* Wir starten jetzt von UNTEN anstatt von oben */
+    bottom: -250px; 
+    right: 5%; /* Leicht eingerückt am rechten Rand */
+    
+    /* Die Größe anpassen: 35% der Bildschirmbreite, aber maximal 130px groß */
+    width: 35%; 
+    max-width: 130px; 
     height: auto;
-    z-index: 15; /* Liegt über dem Hintergrund, aber unter Button/Header falls nötig */
-    animation: slideInHand 1s ease-out 1.5s forwards; /* Rutscht nach 1.5s Verzögerung herein */
+    
+    /* Sicherheitsnetz: Man kann "durch" die Hand klicken, falls sie im Weg ist */
+    pointer-events: none; 
+    
+    z-index: 15; 
+    animation: slideInHand 1s ease-out 1.5s forwards; 
+}
+
+@keyframes slideInHand {
+    0% {
+        bottom: -250px;
+        transform: rotate(15deg); /* Startet leicht schräg nach rechts gekippt */
+    }
+    60% {
+        bottom: 40px; /* Rutscht etwas höher als die Endposition (für einen leichten Wipp-Effekt) */
+        transform: rotate(-5deg); /* Kippt leicht nach links */
+    }
+    100% {
+        bottom: 15px; /* Die perfekte Endposition im unteren Bereich */
+        transform: rotate(0deg); /* Steht am Ende schön gerade */
+    }
 }
 
 @keyframes slideInHand {
