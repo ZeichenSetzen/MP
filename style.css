@@ -21,7 +21,9 @@ body, h1, p, .video-title {
 body {
     background-color: var(--color-blue); 
     font-family: var(--font-body);
-    min-height: 100vh;
+    height: 100vh; /* NEU: Feste Höhe, damit nichts gescrollt werden kann */
+    width: 100vw;
+    overflow: hidden; /* NEU: Verhindert Scrollen auf Body-Ebene */
     display: flex;
     flex-direction: column;
     
@@ -282,10 +284,11 @@ body {
 .fact-wrapper:active .fact-png {
     animation: wiggle 0.3s ease-in-out;
 }
-
 .fact-png {
     width: 100%;
     height: auto;
+    max-height: 50vh; /* NEU: Bild darf maximal die halbe Bildschirmhöhe einnehmen */
+    object-fit: contain; /* Sorgt dafür, dass es proportional bleibt */
     display: block;
     box-shadow: none;
     border-radius: 0;
@@ -371,9 +374,9 @@ body {
 .portrait-video {
     width: 100%;
     max-width: 400px;
-    /* Damit es nicht zu groß wird und Platz zum Rand lässt */
+    max-height: 60vh; /* NEU: Video darf maximal 60% der Höhe einnehmen */
     height: auto;
-    border-radius: 15px; /* Ein kleiner Radius sieht meist "sittlicher" aus */
+    border-radius: 15px; 
     overflow: hidden;
 }
 
