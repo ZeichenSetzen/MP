@@ -167,53 +167,38 @@ body {
     animation: none;
     transform: scale(0.96);
 }
-/* --- ANIMIERTE HAND AUF STARTSEITE --- */
+
+/* --- ANIMIERTE HAND (Hinter dem Footer) --- */
 .sliding-hand {
     position: absolute;
-    /* Wir starten jetzt von UNTEN anstatt von oben */
-    bottom: -250px; 
-    right: 5%; /* Leicht eingerückt am rechten Rand */
+    bottom: -300px; /* Startpunkt: komplett hinter dem Footer versteckt */
+    right: 5%; 
     
-    /* Die Größe anpassen: 35% der Bildschirmbreite, aber maximal 130px groß */
-    width: 35%; 
-    max-width: 130px; 
+    width: 45%; 
+    max-width: 200px; 
     height: auto;
     
-    /* Sicherheitsnetz: Man kann "durch" die Hand klicken, falls sie im Weg ist */
+    z-index: 5; /* Muss kleiner sein als der Footer z-index (z.B. 10) */
     pointer-events: none; 
     
-    z-index: 15; 
-    animation: slideInHand 1s ease-out 1.5s forwards; 
+    /* Animation: Name, Dauer, Art, Verzögerung, Modus */
+    animation: slideInFromFooter 1.2s ease-out 1s forwards; 
 }
 
-@keyframes slideInHand {
+@keyframes slideInFromFooter {
     0% {
-        bottom: -250px;
-        transform: rotate(15deg); /* Startet leicht schräg nach rechts gekippt */
+        bottom: -300px; 
+        transform: rotate(10deg);
     }
-    60% {
-        bottom: 40px; /* Rutscht etwas höher als die Endposition (für einen leichten Wipp-Effekt) */
-        transform: rotate(-5deg); /* Kippt leicht nach links */
-    }
-    100% {
-        bottom: 15px; /* Die perfekte Endposition im unteren Bereich */
-        transform: rotate(0deg); /* Steht am Ende schön gerade */
-    }
-}
-
-@keyframes slideInHand {
-    0% {
-        top: -300px;
-        transform: rotate(10deg); /* Startet leicht schräg */
-    }
-    60% {
-        top: 80px; /* Rutscht etwas zu weit nach unten (Bouncing-Effekt) */
+    70% {
+        bottom: 95px; /* Rutscht etwas weiter hoch (für den Wipp-Effekt) */
         transform: rotate(-5deg);
     }
     100% {
-        top: 60px; /* Endposition (passe den Wert an, damit sie gut sitzt) */
-        transform: rotate(0deg); /* Steht am Ende gerade */
+        bottom: 80px; /* Endposition auf der Kante */
+        transform: rotate(0deg);
     }
+}
 }
 /* --- FOOTER MIT PNG --- */
 .site-footer {
