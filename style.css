@@ -165,6 +165,31 @@ body {
     animation: none;
     transform: scale(0.96);
 }
+* --- ANIMIERTE HAND AUF STARTSEITE --- */
+.sliding-hand {
+    position: absolute;
+    top: -300px; /* Startet weit außerhalb des sichtbaren Bereichs */
+    right: 20px; /* Position am rechten Rand */
+    width: 150px; /* Passe die Größe deines Bildes an */
+    height: auto;
+    z-index: 15; /* Liegt über dem Hintergrund, aber unter Button/Header falls nötig */
+    animation: slideInHand 1s ease-out 1.5s forwards; /* Rutscht nach 1.5s Verzögerung herein */
+}
+
+@keyframes slideInHand {
+    0% {
+        top: -300px;
+        transform: rotate(10deg); /* Startet leicht schräg */
+    }
+    60% {
+        top: 80px; /* Rutscht etwas zu weit nach unten (Bouncing-Effekt) */
+        transform: rotate(-5deg);
+    }
+    100% {
+        top: 60px; /* Endposition (passe den Wert an, damit sie gut sitzt) */
+        transform: rotate(0deg); /* Steht am Ende gerade */
+    }
+}
 /* --- FOOTER MIT PNG --- */
 .site-footer {
     background-image: url('footer.png'); /* HIER den Namen deiner Footer-Grafik eintragen */
