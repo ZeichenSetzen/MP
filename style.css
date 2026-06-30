@@ -21,9 +21,11 @@ body, h1, p, .video-title {
 body {
     background-color: var(--color-blue); 
     font-family: var(--font-body);
-    height: 100vh; /* NEU: Feste Höhe, damit nichts gescrollt werden kann */
+    
+    /* DER ZAUBERTRICK FÜR HANDYS: 100dvh statt 100vh */
+    height: 100dvh; 
     width: 100vw;
-    overflow: hidden; /* NEU: Verhindert Scrollen auf Body-Ebene */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     
